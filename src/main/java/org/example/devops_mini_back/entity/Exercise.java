@@ -18,4 +18,16 @@ public class Exercise {
     private int kcal;
     private int youtubeId;
     private String picture;
+
+    public void setKcal(int kcal) {
+        this.kcal = kcal;
+    }
+
+    public void setYoutubeId(int youtubeId) {
+        this.youtubeId = youtubeId;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 }
