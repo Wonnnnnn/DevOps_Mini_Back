@@ -3,7 +3,11 @@ package org.example.devops_mini_back.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+<<<<<<< Updated upstream
 
+=======
+import org.hibernate.mapping.ToOne;
+>>>>>>> Stashed changes
 @Entity
 @Getter
 public class CalorieDiagnosis {

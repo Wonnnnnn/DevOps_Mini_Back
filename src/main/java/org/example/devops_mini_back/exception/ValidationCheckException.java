@@ -1,4 +1,4 @@
-package org.example.minishoppingmall.exception;
+package org.example.devops_mini_back.exception;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;
