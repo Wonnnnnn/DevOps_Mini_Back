@@ -18,4 +18,11 @@ public class Food {
     private int kcal;
     private String picture;
 
+    public void setKcal(int kcal) {
+        this.kcal = kcal;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 }

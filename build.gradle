@@ -3,10 +3,6 @@ plugins {
     id 'org.springframework.boot' version '3.3.0'
     id 'io.spring.dependency-management' version '1.1.5'
     id 'org.asciidoctor.jvm.convert' version '3.3.2'
-<<<<<<< HEAD
-=======
-    // 쿼리DSL추가 빌드
->>>>>>> 70face24e3cc3eb81344b2eb4523c37a894df779
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
@@ -36,12 +32,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-<<<<<<< HEAD
 
-=======
-    //쿼리dsl dependency 추가
-    // query dsl 버전 명시해야 jakarta사용 (javax X)
->>>>>>> 70face24e3cc3eb81344b2eb4523c37a894df779
     implementation 'com.querydsl:querydsl-apt:5.0.0'
     implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
     implementation 'com.querydsl:querydsl-core:5.0.0'
@@ -56,6 +47,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
 }
 
 tasks.named('test') {

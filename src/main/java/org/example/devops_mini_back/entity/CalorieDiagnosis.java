@@ -2,7 +2,10 @@ package org.example.devops_mini_back.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Entity
+@Getter
 public class CalorieDiagnosis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +25,7 @@ public class CalorieDiagnosis {
 
     private double workoutNeeded;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="user_id")
     private User user;
 }
