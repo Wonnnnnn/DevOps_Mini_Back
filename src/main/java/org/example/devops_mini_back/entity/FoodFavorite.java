@@ -13,9 +13,11 @@ public class FoodFavorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int foodFavoriteId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
+
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="food_id")
     private Food food;
