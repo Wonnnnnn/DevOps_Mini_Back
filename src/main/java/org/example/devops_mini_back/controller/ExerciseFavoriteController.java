@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/exercisefavorites")
 @RequiredArgsConstructor
 public class ExerciseFavoriteController {
     private final ExerciseFavoriteService exerciseFavoriteService;
 
-    @GetMapping("/exercisefavorites")
+    @GetMapping
     public List<ExerciseFavoriteResponseDto> getAllExerciseFavs() {
         return exerciseFavoriteService.getAllExerciseFavorites()
                 .stream()
@@ -31,7 +31,7 @@ public class ExerciseFavoriteController {
                 ).collect(Collectors.toList());
     }
 
-    @GetMapping("/exercisefavorites/{exerciseFavoriteId}")
+    @GetMapping("/{exerciseFavoriteId}")
     public ExerciseFavoriteResponseDto getExerciseFav(@PathVariable("exerciseFavoriteId") int exerciseFavoriteId) {
         ExerciseFavorite target = exerciseFavoriteService.getExerciseFavoriteById(exerciseFavoriteId);
 
@@ -41,12 +41,12 @@ public class ExerciseFavoriteController {
                 target.getExercise().getPicture());
     }
 
-    @PostMapping("/exercisefavorites")
+    @PostMapping
     public ExerciseFavorite addExerciseFav(@RequestBody ExerciseFavoriteCreateDto exerciseFavoriteCreateDto) {
         return exerciseFavoriteService.addExerciseFavorite(exerciseFavoriteCreateDto);
     }
 
-    @DeleteMapping("/exercisefavorites/{exerciseFavoriteId}")
+    @DeleteMapping("/{exerciseFavoriteId}")
     public void deleteExerciseFav(@PathVariable("exerciseFavoriteId") int exerciseFavoriteId) {
         exerciseFavoriteService.deleteExerciseFavorite(exerciseFavoriteId);
     }

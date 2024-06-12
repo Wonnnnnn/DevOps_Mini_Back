@@ -2,6 +2,7 @@ package org.example.devops_mini_back.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.IntakeCalorie.IntakeCalorieCreateDto;
+import org.example.devops_mini_back.dto.IntakeCalorie.IntakeCalorieIdAndDateDto;
 import org.example.devops_mini_back.entity.IntakeCalorie;
 import org.example.devops_mini_back.repository.IntakeCalorieRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class IntakeCalorieService {
 
     public List<IntakeCalorie> findByUserId(int userId){
         return intakeCalorieRepository.findByUser_UserId(userId);
+    }
+
+    public IntakeCalorie findByUserIdAndDate(IntakeCalorieIdAndDateDto targetDto){
+        return intakeCalorieRepository.findByUser_UserIdAndDate(targetDto.getUserId(), targetDto.getDate()).get();
     }
 
     public List<IntakeCalorie> getAllIntakeCalorie() {
@@ -84,14 +89,16 @@ public class IntakeCalorieService {
         }
     }
 
-
-    private Optional<IntakeCalorie> existCheck(IntakeCalorieCreateDto createDto) {
-        return intakeCalorieRepository.findByUser_UserIdAndDate(createDto.getUserId(), createDto.getDate());
+    @Transactional
+    public void deleteIntakeCalorieById(int intakeCalorieId) {
+        intakeCalorieRepository.deleteById(intakeCalorieId);
     }
 
     @Transactional
-    public void deleteIntakeCalorie(int intakeCalorieId) {
-        intakeCalorieRepository.deleteById(intakeCalorieId);
+    public void deleteIntakeCalorieByIdAndDate(IntakeCalorieIdAndDateDto intakeCalorieDeleteDto) {
+        intakeCalorieRepository.deleteByUser_UserIdAndDate(intakeCalorieDeleteDto.getUserId(), intakeCalorieDeleteDto.getDate());
     }
+
+
 
 }

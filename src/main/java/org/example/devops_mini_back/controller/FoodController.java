@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/foods")
 @RequiredArgsConstructor
 public class FoodController {
     private final FoodService foodService;
 
-    @GetMapping("/foods")
+    @GetMapping
     public List<Food> getAllFood() {
         return foodService.getAllFood();
     }
 
-    @GetMapping("/foods/{foodId}")
+    @GetMapping("/{foodId}")
     public Food getFood(@PathVariable("foodId") int foodId) {
         return foodService.getFoodById(foodId);
     }
 
-    @PostMapping("/foods")
+    @PostMapping
     public Food addFood(@RequestBody FoodCreateDto foodCreateDto) {
         return foodService.addFood(foodCreateDto);
     }
 
-    @PostMapping("/foods/update")
+    @PutMapping
     public Food updateFood(@RequestBody FoodUpdateDto foodUpdateDto) {
         return foodService.updateFood(foodUpdateDto);
     }
 
-    @DeleteMapping("/foods/{foodId}")
+    @DeleteMapping("/{foodId}")
     public void deleteFood(@PathVariable("foodId") int foodId) {
         foodService.deleteFood(foodId);
     }

@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/exercises")
 @RequiredArgsConstructor
 public class ExerciseController {
     private final ExerciseService exerciseService;
 
-    @GetMapping("/exercises")
+    @GetMapping
     public List<Exercise> getAllExercises() {
         return exerciseService.getAllExercises();
     }
 
-    @GetMapping("/exercises/{exerciseId}")
+    @GetMapping("/{exerciseId}")
     public Exercise getExercise(@PathVariable("exerciseId") int exerciseId) {
         return exerciseService.getExerciseById(exerciseId);
     }
 
-    @PostMapping("/exercises")
+    @PostMapping
     public Exercise addExercise(@RequestBody ExerciseCreateDto exerciseCreateDto) {
         return exerciseService.addExercise(exerciseCreateDto);
     }
 
-    @PostMapping("/exercises/update")
+    @PutMapping
     public Exercise updateExercise(@RequestBody ExerciseUpdateDto exerciseUpdateDto) {
         return exerciseService.updateExercise(exerciseUpdateDto);
     }
 
-    @DeleteMapping("/exercises/{exerciseId}")
+    @DeleteMapping("/{exerciseId}")
     public void deleteFood(@PathVariable("exerciseId") int exerciseId) {
         exerciseService.deleteExercise(exerciseId);
     }

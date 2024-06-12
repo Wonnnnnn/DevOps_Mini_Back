@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/foodfavorites")
 @RequiredArgsConstructor
 public class FoodFavoriteController {
     private final FoodFavoriteService foodFavoriteService;
 
-    @GetMapping("/foodfavorites")
+    @GetMapping
     public List<FoodFavoriteResponseDto> getAllFoodFavs() {
         return foodFavoriteService.getAllFoodFavorites()
                 .stream()
@@ -30,7 +30,7 @@ public class FoodFavoriteController {
                 ).collect(Collectors.toList());
     }
 
-    @GetMapping("/foodfavorites/{foodFavoriteId}")
+    @GetMapping("/{foodFavoriteId}")
     public FoodFavoriteResponseDto getFoodFav(@PathVariable("foodFavoriteId") int foodFavoriteId) {
         FoodFavorite target = foodFavoriteService.getFoodFavoriteById(foodFavoriteId);
 
@@ -39,12 +39,12 @@ public class FoodFavoriteController {
                 target.getFood().getKcal(), target.getFood().getPicture());
     }
 
-    @PostMapping("/foodfavorites")
+    @PostMapping
     public FoodFavorite addFoodFav(@RequestBody FoodFavoriteCreateDto foodFavoriteCreateDto) {
         return foodFavoriteService.addFoodFavorite(foodFavoriteCreateDto);
     }
 
-    @DeleteMapping("/foodfavorites/{foodFavoriteId}")
+    @DeleteMapping("/{foodFavoriteId}")
     public void deleteFoodFav(@PathVariable("foodFavoriteId") int foodFavoriteId) {
         foodFavoriteService.deleteFoodFavorite(foodFavoriteId);
     }

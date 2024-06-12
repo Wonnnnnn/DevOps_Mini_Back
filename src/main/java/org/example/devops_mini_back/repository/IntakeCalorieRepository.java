@@ -12,4 +12,5 @@ public interface IntakeCalorieRepository extends JpaRepository<IntakeCalorie, In
     List<IntakeCalorie> findByUser_UserId(int userId);
     Optional<IntakeCalorie> findByUser_UserIdAndDate(int userId, Date date);
     void deleteAllByUser_UserId(int userID);
+    void deleteByUser_UserIdAndDate(int userID, Date date);
 }

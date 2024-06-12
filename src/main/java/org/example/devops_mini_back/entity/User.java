@@ -26,7 +26,9 @@ public class User {
     @Column(nullable = false, length = 3)
     private String name;
 
+    @Column(columnDefinition = "int default 0")
     private double bmi;
+
     @OneToOne(fetch=FetchType.LAZY,mappedBy = "user")
     @JsonManagedReference
     private CalorieDiagnosis calorieDiagnosis;
