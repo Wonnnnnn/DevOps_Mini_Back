@@ -1,12 +1,17 @@
 package org.example.devops_mini_back.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.example.devops_mini_back.dto.BurnCalorie.BurnCalorieCreateDto;
 
 import java.sql.Date;
 
 @Entity
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class BurnCalorie {
 
     @Id
@@ -22,4 +27,8 @@ public class BurnCalorie {
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
+
+    public void addBurnCalorie(BurnCalorieCreateDto createDto) {
+        this.calorie += createDto.getCalorie();
+    }
 }

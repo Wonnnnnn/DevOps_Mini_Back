@@ -18,8 +18,8 @@ public class IntakeCalorieService {
     private final IntakeCalorieRepository intakeCalorieRepository;
     private final UserRepository userRepository;
 
-    public IntakeCalorie findByUserId(int userId){
-        return intakeCalorieRepository.findByUser_UserId(userId).get();
+    public List<IntakeCalorie> findByUserId(int userId){
+        return intakeCalorieRepository.findByUser_UserId(userId);
     }
 
     public List<IntakeCalorie> getAllIntakeCalorie() {
