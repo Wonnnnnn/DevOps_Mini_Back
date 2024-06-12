@@ -1,8 +1,9 @@
 package org.example.devops_mini_back.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.devops_mini_back.dto.UserCreateDto;
-import org.example.devops_mini_back.dto.UserUpdateDto;
+import org.example.devops_mini_back.dto.User.UserCreateDto;
+import org.example.devops_mini_back.dto.User.UserUpdateDto;
+import org.example.devops_mini_back.entity.CalorieDiagnosis;
 import org.example.devops_mini_back.entity.User;
 import org.example.devops_mini_back.exception.ValidationCheckException;
 import org.example.devops_mini_back.repository.*;
@@ -33,8 +34,11 @@ public class UserService {
     @Transactional
     public int addUser(UserCreateDto userCreateDto){
         validationCheck(userCreateDto.getId());
-        User user = User.newUser(userCreateDto);
-        return userRepository.save(user).getUserId();
+        CalorieDiagnosis calorieDiagnosis=new CalorieDiagnosis();
+        User user = User.newUser(userCreateDto,calorieDiagnosis);
+        calorieDiagnosis.setUser(user);
+        calorieDiagnosisRepository.save(calorieDiagnosis);
+        return user.getUserId();
     }
 
     private void validationCheck(String newid) {

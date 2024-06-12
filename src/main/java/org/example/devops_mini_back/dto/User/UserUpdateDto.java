@@ -1,4 +1,4 @@
-package org.example.devops_mini_back.dto;
+package org.example.devops_mini_back.dto.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

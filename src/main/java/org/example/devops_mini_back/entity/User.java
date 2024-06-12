@@ -1,10 +1,12 @@
 package org.example.devops_mini_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.devops_mini_back.dto.UserCreateDto;
+import org.example.devops_mini_back.dto.User.UserCreateDto;
 
 @Entity
 @NoArgsConstructor
@@ -25,9 +27,11 @@ public class User {
     private String name;
 
     private double bmi;
-
-    public static User newUser(UserCreateDto userCreateDto) {
-        return new User(0,userCreateDto.getId(),userCreateDto.getPassword(), userCreateDto.getUsername(),userCreateDto.getBmi());
+    @OneToOne(fetch=FetchType.LAZY,mappedBy = "user")
+    @JsonManagedReference
+    private CalorieDiagnosis calorieDiagnosis;
+    public static User newUser(UserCreateDto userCreateDto,CalorieDiagnosis calorieDiagnosis1) {
+        return new User(0,userCreateDto.getId(),userCreateDto.getPassword(), userCreateDto.getUsername(),userCreateDto.getBmi(),calorieDiagnosis1);
     }
 
     public void setBmi(double bmi) {

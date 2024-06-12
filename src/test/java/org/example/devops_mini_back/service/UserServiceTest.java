@@ -1,13 +1,9 @@
 package org.example.devops_mini_back.service;
 
-import org.assertj.core.api.Assertions;
-import org.example.devops_mini_back.dto.UserCreateDto;
-import org.example.devops_mini_back.dto.UserUpdateDto;
+import org.example.devops_mini_back.dto.User.UserCreateDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 
