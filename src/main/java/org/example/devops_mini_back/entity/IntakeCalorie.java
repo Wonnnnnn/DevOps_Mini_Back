@@ -19,19 +19,35 @@ public class IntakeCalorie {
     @Column(nullable = false, length = 10)
     private Date date;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "int default 0")
     private int breakfast;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "int default 0")
     private int lunch;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "int default 0")
     private int dinner;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "int default 0")
     private int snack;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
+
+    public void setBreakfast(int breakfast) {
+        this.breakfast = breakfast;
+    }
+
+    public void setLunch(int lunch) {
+        this.lunch = lunch;
+    }
+
+    public void setDinner(int dinner) {
+        this.dinner = dinner;
+    }
+
+    public void setSnack(int snack) {
+        this.snack = snack;
+    }
 }

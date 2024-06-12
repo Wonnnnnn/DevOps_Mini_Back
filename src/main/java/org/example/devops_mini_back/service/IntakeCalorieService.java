@@ -32,24 +32,56 @@ public class IntakeCalorieService {
 
     @Transactional
     public IntakeCalorie addIntakeCalorie(IntakeCalorieCreateDto intakeCalorieCreateDto) {
-        IntakeCalorie intakeCalorie = new IntakeCalorie(0, intakeCalorieCreateDto.getDate(),
-                intakeCalorieCreateDto.getBreakfast(), intakeCalorieCreateDto.getLunch(),
-                intakeCalorieCreateDto.getDinner(), intakeCalorieCreateDto.getSnack(),
-                userRepository.findById(intakeCalorieCreateDto.getUserId()).get()
-        );
-        return intakeCalorieRepository.save(intakeCalorie);
-    }
+        Optional<IntakeCalorie> existIntake = intakeCalorieRepository
+                .findByUser_UserIdAndDate(intakeCalorieCreateDto.getUserId(), intakeCalorieCreateDto.getDate());
 
-
-    @Transactional
-    public int addIntake(IntakeCalorieCreateDto createDto) {
-        Optional<IntakeCalorie> existIntake = existCheck(createDto);
-        if (existIntake.isPresent()) {
+        if (existIntake.isPresent()) { //row 있을 시
             IntakeCalorie intakeCalorie = existIntake.get();
-        } else {
 
+            if(intakeCalorie.getBreakfast() == 0) {
+                intakeCalorie.setBreakfast(intakeCalorieCreateDto.getBreakfast());
+            } else{
+                if(intakeCalorieCreateDto.getBreakfast() != 0) {
+                    intakeCalorie.setBreakfast(intakeCalorie.getBreakfast());
+                }
+            }
+
+            if(intakeCalorie.getLunch() == 0) {
+                intakeCalorie.setLunch(intakeCalorieCreateDto.getLunch());
+            } else{
+                if(intakeCalorieCreateDto.getLunch() != 0) {
+                    intakeCalorie.setLunch(intakeCalorie.getLunch());
+                }
+            }
+
+            if(intakeCalorie.getDinner() == 0) {
+                intakeCalorie.setDinner(intakeCalorieCreateDto.getDinner());
+            } else{
+                if(intakeCalorieCreateDto.getDinner() != 0) {
+                    intakeCalorie.setDinner(intakeCalorie.getDinner());
+                }
+            }
+
+            if(intakeCalorie.getSnack() == 0) {
+                intakeCalorie.setSnack(intakeCalorieCreateDto.getSnack());
+            } else{
+                if(intakeCalorieCreateDto.getSnack() != 0) {
+                    intakeCalorie.setSnack(intakeCalorie.getSnack());
+                }
+            }
+
+            return intakeCalorieRepository.save(intakeCalorie);
+
+        } else { //row 없을 시
+            IntakeCalorie makeintakeCalorie = new IntakeCalorie(
+                    0, intakeCalorieCreateDto.getDate(),
+                    intakeCalorieCreateDto.getBreakfast(), intakeCalorieCreateDto.getLunch(),
+                    intakeCalorieCreateDto.getDinner(), intakeCalorieCreateDto.getSnack(),
+                    userRepository.findById(intakeCalorieCreateDto.getUserId()).get()
+            );
+
+            return makeintakeCalorie;
         }
-        return 1;
     }
 
 
