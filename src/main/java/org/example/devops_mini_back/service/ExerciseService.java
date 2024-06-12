@@ -27,7 +27,9 @@ public class ExerciseService {
 
     @Transactional
     public Exercise addExercise(ExerciseCreateDto exerciseCreateDto) {
-        Exercise exercise = new Exercise(0, exerciseCreateDto.getExerciseName(), exerciseCreateDto.getKcal(), exerciseCreateDto.getYoutubeId(), exerciseCreateDto.getPicture());
+        Exercise exercise = new Exercise(0,
+                exerciseCreateDto.getExerciseName(), exerciseCreateDto.getKcal(),
+                exerciseCreateDto.getYoutubeId(), exerciseCreateDto.getPicture());
         return exerciseRepository.save(exercise);
     }
 

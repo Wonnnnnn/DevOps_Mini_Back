@@ -27,7 +27,9 @@ public class FoodFavoriteService {
 
     @Transactional
     public FoodFavorite addFoodFavorite(FoodFavoriteCreateDto foodFavoriteCreateDto) {
-        FoodFavorite foodFavorite = new FoodFavorite(0, userService.getUserById(foodFavoriteCreateDto.getUserId()), foodService.getFoodById(foodFavoriteCreateDto.getFoodId()));
+        FoodFavorite foodFavorite = new FoodFavorite(0,
+                userService.getUserById(foodFavoriteCreateDto.getUserId()),
+                foodService.getFoodById(foodFavoriteCreateDto.getFoodId()));
         return foodFavoriteRepository.save(foodFavorite);
     }
 

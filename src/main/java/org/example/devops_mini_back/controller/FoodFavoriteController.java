@@ -1,10 +1,8 @@
 package org.example.devops_mini_back.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.devops_mini_back.dto.Food.FoodCreateDto;
 import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteCreateDto;
 import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteResponseDto;
-import org.example.devops_mini_back.entity.Food;
 import org.example.devops_mini_back.entity.FoodFavorite;
 import org.example.devops_mini_back.service.FoodFavoriteService;
 import org.springframework.web.bind.annotation.*;

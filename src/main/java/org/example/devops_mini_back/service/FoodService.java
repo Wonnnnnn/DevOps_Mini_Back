@@ -26,7 +26,8 @@ public class FoodService {
 
     @Transactional
     public Food addFood(FoodCreateDto foodCreateDto) {
-        Food food = new Food(0, foodCreateDto.getFoodName(), foodCreateDto.getKcal(), foodCreateDto.getPicture());
+        Food food = new Food(0, foodCreateDto.getFoodName(),
+                foodCreateDto.getKcal(), foodCreateDto.getPicture());
         return foodRepository.save(food);
     }
 

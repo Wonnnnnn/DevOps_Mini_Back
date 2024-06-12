@@ -27,7 +27,9 @@ public class ExerciseFavoriteService {
 
     @Transactional
     public ExerciseFavorite addExerciseFavorite(ExerciseFavoriteCreateDto exerciseFavoriteCreateDto) {
-        ExerciseFavorite exerciseFavorite = new ExerciseFavorite(0, userService.getUserById(exerciseFavoriteCreateDto.getUserId()), exerciseService.getExerciseById(exerciseFavoriteCreateDto.getExerciseId()));
+        ExerciseFavorite exerciseFavorite = new ExerciseFavorite(0,
+                userService.getUserById(exerciseFavoriteCreateDto.getUserId()),
+                exerciseService.getExerciseById(exerciseFavoriteCreateDto.getExerciseId()));
         return exerciseFavoriteRepository.save(exerciseFavorite);
     }
 
