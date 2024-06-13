@@ -31,10 +31,6 @@ public class IntakeCalorieService {
         return intakeCalorieRepository.findAll();
     }
 
-    public IntakeCalorie getIntakeCalorieById(int id) {
-        return intakeCalorieRepository.findById(id).get();
-    }
-
     @Transactional
     public IntakeCalorie addIntakeCalorie(IntakeCalorieCreateDto intakeCalorieCreateDto) {
         Optional<IntakeCalorie> existIntake = intakeCalorieRepository
@@ -97,6 +93,11 @@ public class IntakeCalorieService {
     @Transactional
     public void deleteIntakeCalorieByIdAndDate(IntakeCalorieIdAndDateDto intakeCalorieDeleteDto) {
         intakeCalorieRepository.deleteByUser_UserIdAndDate(intakeCalorieDeleteDto.getUserId(), intakeCalorieDeleteDto.getDate());
+    }
+
+    @Transactional
+    public void deleteIntakeCalorieByUid(int userId) {
+        intakeCalorieRepository.deleteAllByUser_UserId(userId);
     }
 
 

@@ -21,6 +21,10 @@ public class ExerciseFavoriteService {
         return exerciseFavoriteRepository.findAll();
     }
 
+    public List<ExerciseFavorite> getAllExerciseFavoritesByUid(int userId) {
+        return exerciseFavoriteRepository.findAllByUser_UserId(userId);
+    }
+
     public ExerciseFavorite getExerciseFavoriteById(int id) {
         return exerciseFavoriteRepository.findById(id).get();
     }

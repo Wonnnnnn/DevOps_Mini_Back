@@ -1,6 +1,7 @@
 package org.example.devops_mini_back.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteResponseDto;
 import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteCreateDto;
 import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteResponseDto;
 import org.example.devops_mini_back.entity.FoodFavorite;
@@ -26,6 +27,20 @@ public class FoodFavoriteController {
                         o.getFood().getFoodName(),
                         o.getFood().getKcal(),
                         o.getFood().getPicture()
+                        )
+                ).collect(Collectors.toList());
+    }
+
+    @GetMapping("/{userId}")
+    public List<FoodFavoriteResponseDto> getAllFoodFavsUid(@PathVariable("userId") int userId) {
+        return foodFavoriteService.getAllFoodFavoritesByUud(userId)
+                .stream()
+                .map( o -> new FoodFavoriteResponseDto(
+                                o.getFoodFavoriteId(),
+                                o.getUser().getUserId(),
+                                o.getFood().getFoodName(),
+                                o.getFood().getKcal(),
+                                o.getFood().getPicture()
                         )
                 ).collect(Collectors.toList());
     }

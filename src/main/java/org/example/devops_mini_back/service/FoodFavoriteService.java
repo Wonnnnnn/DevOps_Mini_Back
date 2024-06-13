@@ -21,6 +21,10 @@ public class FoodFavoriteService {
         return foodFavoriteRepository.findAll();
     }
 
+    public List<FoodFavorite> getAllFoodFavoritesByUud(int userid) {
+        return foodFavoriteRepository.findAllByUser_UserId(userid);
+    }
+
     public FoodFavorite getFoodFavoriteById(int id) {
         return foodFavoriteRepository.findById(id).get();
     }
