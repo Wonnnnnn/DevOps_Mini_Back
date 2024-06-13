@@ -1,5 +1,6 @@
 package org.example.devops_mini_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class BurnCalorie {
 
     @ManyToOne
     @JoinColumn(name="user_id")
+    @JsonIgnore
     private User user;
 
     public void addBurnCalorie(BurnCalorieCreateDto createDto) {

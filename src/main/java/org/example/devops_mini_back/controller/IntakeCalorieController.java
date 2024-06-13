@@ -47,7 +47,7 @@ public class IntakeCalorieController {
                 ).collect(Collectors.toList());
     }
 
-    @GetMapping
+    @GetMapping("/UidAndDate")
     public IntakeCalorieResponseDto getIntakeByUidAndDate(@RequestBody IntakeCalorieIdAndDateDto targetDto) {
         IntakeCalorie resp = intakeCalorieService.findByUserIdAndDate(targetDto);
 

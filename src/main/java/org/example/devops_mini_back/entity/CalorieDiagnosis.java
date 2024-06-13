@@ -2,6 +2,7 @@ package org.example.devops_mini_back.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -31,6 +32,7 @@ public class CalorieDiagnosis {
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     @JsonBackReference
+    @JsonIgnore
     private User user;
 
     public void setUser(User user) {

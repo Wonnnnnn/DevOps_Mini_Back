@@ -9,7 +9,9 @@ import org.example.devops_mini_back.entity.CalorieDiagnosis;
 import org.example.devops_mini_back.service.BurnCalorieService;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/burncalorie")
@@ -20,6 +22,10 @@ public class BurnCalorieController {
     @GetMapping("/{userId}")
     public List<BurnCalorie> getburnbyuserId(@PathVariable("userId") int userId) {
         return burnCalorieService.getBurnCalorieByUser(userId);
+    }
+    @GetMapping("/{userId}/{date}")
+    public BurnCalorie getburnbyuserIdDate(@PathVariable("userId") int userId, @PathVariable("date") Date date) {
+        return burnCalorieService.getBurnCalorieByIdAndDate(userId,date).get();
     }
 
     @PostMapping
@@ -36,4 +42,5 @@ public class BurnCalorieController {
     public void deleteBurnCalorieByUserIdAndDate(@RequestBody BurnCalorieDeleteDto deleteDto){
         burnCalorieService.deleteBurnCalorieByUserAndDate(deleteDto);
     }
+
 }

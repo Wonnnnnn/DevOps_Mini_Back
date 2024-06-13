@@ -1,6 +1,7 @@
 package org.example.devops_mini_back.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,7 @@ public class User {
 
     @OneToOne(fetch=FetchType.LAZY,mappedBy = "user")
     @JsonManagedReference
+    @JsonIgnore
     private CalorieDiagnosis calorieDiagnosis;
     public static User newUser(UserCreateDto userCreateDto,CalorieDiagnosis calorieDiagnosis1) {
         return new User(0,userCreateDto.getId(),userCreateDto.getPassword(), userCreateDto.getUsername(),userCreateDto.getBmi(),calorieDiagnosis1);

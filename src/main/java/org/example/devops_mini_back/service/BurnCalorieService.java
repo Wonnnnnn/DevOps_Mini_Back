@@ -11,6 +11,7 @@ import org.example.devops_mini_back.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,9 @@ public class BurnCalorieService {
     }
     public BurnCalorie getBurnCalorieById(int id) {
         return burnCalorieRepository.findById(id).get();
+    }
+    public Optional<BurnCalorie> getBurnCalorieByIdAndDate(int userId, Date date){
+        return burnCalorieRepository.findByUser_UserIdAndDate(userId,date);
     }
 
 
