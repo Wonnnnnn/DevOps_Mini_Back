@@ -24,8 +24,8 @@ public class ExerciseFavoriteController {
                                 o.getExerciseFavoriteId(),
                                 o.getUser().getUserId(),
                                 o.getExercise().getExerciseName(),
-                                o.getExercise().getKcal(),
                                 o.getExercise().getYoutubeId(),
+                                o.getExercise().getKcal(),
                                 o.getExercise().getPicture()
                         )
                 ).collect(Collectors.toList());

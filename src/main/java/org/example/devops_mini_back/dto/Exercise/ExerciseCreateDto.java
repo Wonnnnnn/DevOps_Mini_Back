@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class ExerciseCreateDto {
     private String exerciseName;
     private int kcal;
-    private int youtubeId;
+    private String youtubeId;
     private String picture;
 }

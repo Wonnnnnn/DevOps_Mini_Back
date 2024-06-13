@@ -16,14 +16,15 @@ public class Exercise {
     @Column(length=45)
     private String exerciseName;
     private int kcal;
-    private int youtubeId;
+    @Column(length=15)
+    private String youtubeId;
     private String picture;
 
     public void setKcal(int kcal) {
         this.kcal = kcal;
     }
 
-    public void setYoutubeId(int youtubeId) {
+    public void setYoutubeId(String youtubeId) {
         this.youtubeId = youtubeId;
     }
 
