@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FoodCreateDto {
     private String foodName;
-    private int kcal;
+    private double kcal;
     private String picture;
 }

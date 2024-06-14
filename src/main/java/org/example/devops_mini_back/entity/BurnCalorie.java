@@ -23,7 +23,7 @@ public class BurnCalorie {
     private Date date;
 
     @Column(nullable = false)
-    private int calorie;
+    private double calorie;
 
     @ManyToOne
     @JoinColumn(name="user_id")

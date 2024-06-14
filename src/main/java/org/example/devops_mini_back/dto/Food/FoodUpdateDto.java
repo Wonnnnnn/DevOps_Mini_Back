@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FoodUpdateDto {
     private int foodId;
-    private int kcal;
+    private double kcal;
     private String picture;
 }

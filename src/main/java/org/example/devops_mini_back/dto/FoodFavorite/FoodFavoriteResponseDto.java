@@ -11,6 +11,6 @@ public class FoodFavoriteResponseDto {
     private int favoriteId;
     private int userId;
     private String foodName;
-    private int kcal;
+    private double kcal;
     private String picture;
 }

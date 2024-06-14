@@ -12,6 +12,6 @@ public class ExerciseFavoriteResponseDto {
     private int userId;
     private String exerciseName;
     private String youtubeId;
-    private int kcal;
+    private double kcal;
     private String picture;
 }

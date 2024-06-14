@@ -15,6 +15,6 @@ import java.sql.Date;
 @AllArgsConstructor
 public class BurnCalorieCreateDto {
     private Date date;
-    private int calorie;
+    private double calorie;
     private int userId;
 }

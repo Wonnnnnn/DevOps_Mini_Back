@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ExerciseUpdateDto {
     private int exerciseId;
-    private int kcal;
+    private double kcal;
     private String youtubeId;
     private String picture;
 }
