@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.View;
 
 import java.nio.file.NotLinkException;
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class ExceptionAdvice {
@@ -36,5 +37,10 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Response<?> DuplicateNameExceptionAdvice(DuplicateNameException e) {
         return new Response("fail", e.getMessage().toString(), null);
+    }
+    @ExceptionHandler(NoSuchElementException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Response<?> NoSuchElementExceptionAdvice(NoSuchElementException e) {
+        return new Response("fail", "해당하는 값이 없습니다.", null);
     }
 }
