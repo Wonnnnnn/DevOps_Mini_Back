@@ -5,12 +5,10 @@ import org.example.devops_mini_back.dto.Food.FoodCreateDto;
 import org.example.devops_mini_back.dto.Food.FoodUpdateDto;
 import org.example.devops_mini_back.entity.Food;
 import org.example.devops_mini_back.exception.DuplicateNameException;
-import org.example.devops_mini_back.exception.ValidationCheckException;
 import org.example.devops_mini_back.repository.FoodRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -61,5 +59,6 @@ public class FoodService {
             throw new RuntimeException("ID가 존재하지 않습니다.");
         }
     }
+
 
 }
