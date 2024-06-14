@@ -23,6 +23,7 @@ public class ExerciseService {
     }
 
     public Exercise getExerciseById(int id) {
+        IdExistCheck(id);
         return exerciseRepository.findById(id).get();
     }
 
@@ -42,6 +43,7 @@ public class ExerciseService {
 
     @Transactional
     public Exercise updateExercise(ExerciseUpdateDto exerciseUpdateDto) {
+        IdExistCheck(exerciseUpdateDto.getExerciseId());
         Exercise exercise = exerciseRepository.findById(exerciseUpdateDto.getExerciseId()).get();
         exercise.setYoutubeId(exerciseUpdateDto.getYoutubeId());
         exercise.setKcal(exerciseUpdateDto.getKcal());
@@ -51,6 +53,13 @@ public class ExerciseService {
 
     @Transactional
     public void deleteExercise(int exerciseId) {
+        IdExistCheck(exerciseId);
         exerciseRepository.deleteById(exerciseId);
+    }
+
+    public void IdExistCheck(int exerciseId) {
+        if(!exerciseRepository.existsById(exerciseId)) {
+            throw new RuntimeException("ID가 존재하지 않습니다.");
+        }
     }
 }
