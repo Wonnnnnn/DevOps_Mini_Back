@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.User.UserCreateDto;
 import org.example.devops_mini_back.dto.User.UserUpdateDto;
 import org.example.devops_mini_back.entity.CalorieDiagnosis;
+import org.example.devops_mini_back.entity.Response;
 import org.example.devops_mini_back.entity.User;
 import org.example.devops_mini_back.exception.ValidationCheckException;
 import org.example.devops_mini_back.repository.*;
