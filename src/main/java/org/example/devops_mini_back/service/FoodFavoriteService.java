@@ -2,6 +2,7 @@ package org.example.devops_mini_back.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteCreateDto;
+import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteDeleteDto;
 import org.example.devops_mini_back.entity.FoodFavorite;
 import org.example.devops_mini_back.repository.FoodFavoriteRepository;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,10 @@ public class FoodFavoriteService {
     @Transactional
     public void deleteFoodFavorite(int foodId) {
         foodFavoriteRepository.deleteById(foodId);
+    }
+
+    @Transactional
+    public void deleteFoodFavoriteUidandFoodId(FoodFavoriteDeleteDto foodFavoriteDeleteDto) {
+        foodFavoriteRepository.deleteByUidandFoodId(foodFavoriteDeleteDto);
     }
 }
