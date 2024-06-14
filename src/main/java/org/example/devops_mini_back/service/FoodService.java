@@ -24,6 +24,7 @@ public class FoodService {
     }
 
     public Food getFoodById(int id) {
+        IdExistCheck(id);
         return foodRepository.findById(id).get();
     }
 
@@ -42,6 +43,7 @@ public class FoodService {
 
     @Transactional
     public Food updateFood(FoodUpdateDto foodUpdateDto) {
+        IdExistCheck(foodUpdateDto.getFoodId());
         Food food = foodRepository.findById(foodUpdateDto.getFoodId()).get();
         food.setKcal(foodUpdateDto.getKcal());
         food.setPicture(foodUpdateDto.getPicture());
@@ -50,7 +52,14 @@ public class FoodService {
 
     @Transactional
     public void deleteFood(int foodId) {
+        IdExistCheck(foodId);
         foodRepository.deleteById(foodId);
+    }
+
+    private void IdExistCheck(int foodId) {
+        if(!foodRepository.existsById(foodId)) {
+            throw new RuntimeException("ID가 존재하지 않습니다.");
+        }
     }
 
 }

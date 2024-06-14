@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.Exercise.ExerciseCreateDto;
 import org.example.devops_mini_back.dto.Exercise.ExerciseUpdateDto;
 import org.example.devops_mini_back.entity.Exercise;
+import org.example.devops_mini_back.exception.DuplicateNameException;
 import org.example.devops_mini_back.repository.ExerciseRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,10 +28,16 @@ public class ExerciseService {
 
     @Transactional
     public Exercise addExercise(ExerciseCreateDto exerciseCreateDto) {
+        ExerciseNameCheck(exerciseCreateDto.getExerciseName());
         Exercise exercise = new Exercise(0,
                 exerciseCreateDto.getExerciseName(), exerciseCreateDto.getKcal(),
                 exerciseCreateDto.getYoutubeId(), exerciseCreateDto.getPicture());
         return exerciseRepository.save(exercise);
+    }
+    private void ExerciseNameCheck(String exerciseName) {
+        if(exerciseRepository.existsByExerciseName(exerciseName)){
+            throw new DuplicateNameException("이미 등록된 운동이 존재합니다.");
+        }
     }
 
     @Transactional
