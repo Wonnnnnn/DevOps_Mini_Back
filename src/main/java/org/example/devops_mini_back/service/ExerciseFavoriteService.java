@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteCreateDto;
 import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteDeleteDto;
 import org.example.devops_mini_back.entity.ExerciseFavorite;
+import org.example.devops_mini_back.exception.AlreadyExistException;
 import org.example.devops_mini_back.repository.ExerciseFavoriteRepository;
 import org.example.devops_mini_back.repository.FoodFavoriteRepository;
 import org.springframework.stereotype.Service;
@@ -31,10 +32,17 @@ public class ExerciseFavoriteService {
 
     @Transactional
     public ExerciseFavorite addExerciseFavorite(ExerciseFavoriteCreateDto exerciseFavoriteCreateDto) {
+        isExistExerciseFavorite(exerciseFavoriteCreateDto.getUserId(), exerciseFavoriteCreateDto.getExerciseId());
         ExerciseFavorite exerciseFavorite = new ExerciseFavorite(0,
                 userService.getUserById(exerciseFavoriteCreateDto.getUserId()),
                 exerciseService.getExerciseById(exerciseFavoriteCreateDto.getExerciseId()));
         return exerciseFavoriteRepository.save(exerciseFavorite);
+    }
+
+    public void isExistExerciseFavorite(int favoriteId, int userid) {
+        if(!exerciseFavoriteRepository.existsByUser_UserIdAndExercise_ExerciseId(userid,favoriteId)) {
+            throw new AlreadyExistException("이미 등록된 운동입니다.");
+        }
     }
 
 

@@ -10,4 +10,5 @@ public interface FoodFavoriteRepository extends JpaRepository<FoodFavorite, Inte
     void deleteAllByUser_UserId(int userID);
     void deleteByUser_UserIdAndFoodFavoriteId(int user_userId, int foodFavoriteId);
     List<FoodFavorite> findAllByUser_UserId(int userID);
+    boolean existsByUser_UserIdAndFood_FoodId(int user_userId, int foodId);
 }

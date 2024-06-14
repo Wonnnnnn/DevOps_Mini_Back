@@ -10,4 +10,5 @@ public interface ExerciseFavoriteRepository extends JpaRepository<ExerciseFavori
     void deleteAllByUser_UserId(int userID);
     void deleteByUser_UserIdAndExerciseFavoriteId(int user_userId, int exerciseFavoriteId);
     List<ExerciseFavorite> findAllByUser_UserId(int userID);
+    boolean existsByUser_UserIdAndExercise_ExerciseId(int user_userId, int exerciseId);
 }

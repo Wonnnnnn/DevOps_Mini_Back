@@ -45,4 +45,10 @@ public class ExceptionAdvice {
     public Response<?> NoSuchElementExceptionAdvice(NoSuchElementException e) {
         return new Response("fail", "해당하는 값이 없습니다.", null);
     }
+
+    @ExceptionHandler(AlreadyExistException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Response<?> AlreadyExistExceptionAdvice(AlreadyExistException e) {
+        return new Response("fail", e.getMessage().toString(), null);
+    }
 }
