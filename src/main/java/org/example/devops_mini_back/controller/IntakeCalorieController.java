@@ -70,11 +70,6 @@ public class IntakeCalorieController {
         );
     }
 
-    @DeleteMapping("/{intakeId}")
-    public void deleteIntakeCalorie(@PathVariable("intakeId") int intakeId){
-        intakeCalorieService.deleteIntakeCalorieById(intakeId);
-    }
-
     @DeleteMapping("/{userId}")
     public void deleteIntakeCalorieByUserId(@PathVariable("userId") int userId){
         intakeCalorieService.deleteIntakeCalorieByUid(userId);

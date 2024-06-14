@@ -57,10 +57,6 @@ public class BurnCalorieService {
     }
 
     @Transactional
-    public void deleteBurnCalorie(int intakeCalorieId) {
-        burnCalorieRepository.deleteById(intakeCalorieId);
-    }
-    @Transactional
     public void deleteBurnCalorieByUserId(int userId) {
         burnCalorieRepository.deleteAllByUser_UserId(userId);
     }

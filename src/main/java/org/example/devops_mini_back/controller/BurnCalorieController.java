@@ -33,10 +33,6 @@ public class BurnCalorieController {
         return burnCalorieService.addBurnCalorie(createDto);
     }
 
-    @DeleteMapping("/{burnId}")
-    public void deleteBurnCalorie(@PathVariable("burnId") int burnId){
-        burnCalorieService.deleteBurnCalorie(burnId);
-    }
     @DeleteMapping("/{userId}")
     public void deleteBurnCalorieByUserId(@PathVariable("userId") int userId){
         burnCalorieService.deleteBurnCalorieByUserId(userId);

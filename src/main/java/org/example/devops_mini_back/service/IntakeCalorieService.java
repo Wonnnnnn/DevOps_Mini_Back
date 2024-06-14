@@ -86,11 +86,6 @@ public class IntakeCalorieService {
     }
 
     @Transactional
-    public void deleteIntakeCalorieById(int intakeCalorieId) {
-        intakeCalorieRepository.deleteById(intakeCalorieId);
-    }
-
-    @Transactional
     public void deleteIntakeCalorieByIdAndDate(IntakeCalorieIdAndDateDto intakeCalorieDeleteDto) {
         intakeCalorieRepository.deleteByUser_UserIdAndDate(intakeCalorieDeleteDto.getUserId(), intakeCalorieDeleteDto.getDate());
     }
