@@ -13,7 +13,7 @@ public class ValidationCheckException extends RuntimeException{
     private List<String> errorMessages;
 
     public ValidationCheckException(List<String> errorMessages) {
-        super(String.join("", errorMessages));
+        super(String.join(" ", errorMessages));
         this.errorMessages = errorMessages;
     }
 

@@ -34,7 +34,7 @@ public class UserService {
     }
     @Transactional
     public int addUser(UserCreateDto userCreateDto){
-        validationCheck(userCreateDto.getId());
+        validationCheck(userCreateDto);
         CalorieDiagnosis calorieDiagnosis=new CalorieDiagnosis();
         User user = User.newUser(userCreateDto,calorieDiagnosis);
         calorieDiagnosis.setUser(user);
@@ -42,12 +42,26 @@ public class UserService {
         return user.getUserId();
     }
 
-    private void validationCheck(String newid) {
+
+
+    private void validationCheck(UserCreateDto userCreateDto){
         List<String> errorMessages = new ArrayList<>();
-        if(userRepository.existsById(newid)){
+        if(userRepository.existsById(userCreateDto.getId())) {
             errorMessages.add("이미 사용된 user ID 입니다.");
+        }
+        if(userCreateDto.getUsername().length()>10){
+            errorMessages.add("사용자 이름은 최대 10자리입니다.");
+        }
+        if(userCreateDto.getPassword().length()>10){
+            errorMessages.add("사용자 비밀번호는 최대 10자리입니다.");
+        }
+        if(userCreateDto.getBmi()<0){
+            errorMessages.add("bmi는 음수일 수 없습니다.");
+        }
+        if (!errorMessages.isEmpty()) {
             throw new ValidationCheckException(errorMessages);
         }
+
     }
 
     @Transactional

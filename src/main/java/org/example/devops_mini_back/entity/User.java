@@ -24,7 +24,7 @@ public class User {
     @Column(nullable = false, length = 10)
     private String password;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false, length = 10)
     private String name;
 
     @Column(columnDefinition = "int default 0")
