@@ -2,8 +2,10 @@ package org.example.devops_mini_back.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteCreateDto;
+import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteDeleteDto;
 import org.example.devops_mini_back.entity.ExerciseFavorite;
 import org.example.devops_mini_back.repository.ExerciseFavoriteRepository;
+import org.example.devops_mini_back.repository.FoodFavoriteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +18,7 @@ public class ExerciseFavoriteService {
     private final ExerciseFavoriteRepository exerciseFavoriteRepository;
     private final ExerciseService exerciseService;
     private final UserService userService;
+    private final FoodFavoriteRepository foodFavoriteRepository;
 
     public List<ExerciseFavorite> getAllExerciseFavorites() {
         return exerciseFavoriteRepository.findAll();
@@ -37,8 +40,12 @@ public class ExerciseFavoriteService {
         return exerciseFavoriteRepository.save(exerciseFavorite);
     }
 
+
     @Transactional
-    public void deleteExerciseFavorite(int foodId) {
-        exerciseFavoriteRepository.deleteById(foodId);
+    public void deleteExerciseFavoriteByUidandExerciseId(ExerciseFavoriteDeleteDto exerciseFavoriteDeleteDto) {
+        exerciseFavoriteRepository
+                .deleteByUser_UserIdAndExerciseFavoriteId(
+                        exerciseFavoriteDeleteDto.getUserId(),
+                        exerciseFavoriteDeleteDto.getExerciseId());
     }
 }

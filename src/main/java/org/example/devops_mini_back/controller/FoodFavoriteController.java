@@ -3,6 +3,7 @@ package org.example.devops_mini_back.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteResponseDto;
 import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteCreateDto;
+import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteDeleteDto;
 import org.example.devops_mini_back.dto.FoodFavorite.FoodFavoriteResponseDto;
 import org.example.devops_mini_back.entity.FoodFavorite;
 import org.example.devops_mini_back.service.FoodFavoriteService;
@@ -59,8 +60,8 @@ public class FoodFavoriteController {
         return foodFavoriteService.addFoodFavorite(foodFavoriteCreateDto);
     }
 
-    @DeleteMapping("/{foodFavoriteId}")
-    public void deleteFoodFav(@PathVariable("foodFavoriteId") int foodFavoriteId) {
-        foodFavoriteService.deleteFoodFavorite(foodFavoriteId);
+    @DeleteMapping
+    public void deleteFoodFavsUidanFoodid(@RequestBody FoodFavoriteDeleteDto foodFavoriteDeleteDto) {
+        foodFavoriteService.deleteFoodFavoriteUidandFoodId(foodFavoriteDeleteDto);
     }
 }
