@@ -15,10 +15,10 @@ public class Food {
     private int foodId;
     @Column(length=45)
     private String foodName;
-    private int kcal;
+    private double kcal;
     private String picture;
 
-    public void setKcal(int kcal) {
+    public void setKcal(double kcal) {
         this.kcal = kcal;
     }
 
