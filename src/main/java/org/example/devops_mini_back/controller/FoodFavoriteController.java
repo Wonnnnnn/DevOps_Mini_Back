@@ -47,8 +47,8 @@ public class FoodFavoriteController {
     }
 
     @PostMapping
-    public FoodFavorite addFoodFav(@RequestBody FoodFavoriteCreateDto foodFavoriteCreateDto) {
-        return foodFavoriteService.addFoodFavorite(foodFavoriteCreateDto);
+    public int addFoodFav(@RequestBody FoodFavoriteCreateDto foodFavoriteCreateDto) {
+        return foodFavoriteService.addFoodFavorite(foodFavoriteCreateDto).getFoodFavoriteId();
     }
 
     @DeleteMapping

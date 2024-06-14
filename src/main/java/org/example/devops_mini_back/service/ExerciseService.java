@@ -6,6 +6,7 @@ import org.example.devops_mini_back.dto.Exercise.ExerciseCreateDto;
 import org.example.devops_mini_back.dto.Exercise.ExerciseUpdateDto;
 import org.example.devops_mini_back.entity.Exercise;
 import org.example.devops_mini_back.exception.DuplicateNameException;
+import org.example.devops_mini_back.exception.NoIdExistsException;
 import org.example.devops_mini_back.repository.ExerciseRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,7 +60,7 @@ public class ExerciseService {
 
     public void IdExistCheck(int exerciseId) {
         if(!exerciseRepository.existsById(exerciseId)) {
-            throw new RuntimeException("ID가 존재하지 않습니다.");
+            throw new NoIdExistsException("ID가 존재하지 않습니다.");
         }
     }
 }

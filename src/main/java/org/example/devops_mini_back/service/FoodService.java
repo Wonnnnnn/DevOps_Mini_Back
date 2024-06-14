@@ -5,6 +5,7 @@ import org.example.devops_mini_back.dto.Food.FoodCreateDto;
 import org.example.devops_mini_back.dto.Food.FoodUpdateDto;
 import org.example.devops_mini_back.entity.Food;
 import org.example.devops_mini_back.exception.DuplicateNameException;
+import org.example.devops_mini_back.exception.NoIdExistsException;
 import org.example.devops_mini_back.repository.FoodRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,7 +57,7 @@ public class FoodService {
 
     private void IdExistCheck(int foodId) {
         if(!foodRepository.existsById(foodId)) {
-            throw new RuntimeException("ID가 존재하지 않습니다.");
+            throw new NoIdExistsException("ID가 존재하지 않습니다.");
         }
     }
 

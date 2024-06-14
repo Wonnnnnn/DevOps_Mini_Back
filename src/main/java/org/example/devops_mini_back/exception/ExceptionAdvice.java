@@ -28,11 +28,13 @@ public class ExceptionAdvice {
     public Response<?> ValidationCheckExceptionAdvice(ValidationCheckException e) {
         return new Response("fail", e.getMessage().toString(), null);
     }
-    @ExceptionHandler(NotLinkException.class)
+
+    @ExceptionHandler(NoIdExistsException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Response<?> NoldExistsExceptionAdvice(NotLinkException e) {
+    public Response<?> NoIdExistsExceptionAdvice(NoIdExistsException e) {
         return new Response("fail", e.getMessage().toString(), null);
     }
+
     @ExceptionHandler(DuplicateNameException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Response<?> DuplicateNameExceptionAdvice(DuplicateNameException e) {

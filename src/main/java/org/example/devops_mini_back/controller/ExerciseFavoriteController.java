@@ -48,8 +48,8 @@ public class ExerciseFavoriteController {
     }
 
     @PostMapping
-    public ExerciseFavorite addExerciseFav(@RequestBody ExerciseFavoriteCreateDto exerciseFavoriteCreateDto) {
-        return exerciseFavoriteService.addExerciseFavorite(exerciseFavoriteCreateDto);
+    public int addExerciseFav(@RequestBody ExerciseFavoriteCreateDto exerciseFavoriteCreateDto) {
+        return exerciseFavoriteService.addExerciseFavorite(exerciseFavoriteCreateDto).getExerciseFavoriteId();
     }
 
     @DeleteMapping
