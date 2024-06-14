@@ -5,12 +5,10 @@ import org.example.devops_mini_back.dto.Food.FoodCreateDto;
 import org.example.devops_mini_back.dto.Food.FoodUpdateDto;
 import org.example.devops_mini_back.entity.Food;
 import org.example.devops_mini_back.exception.DuplicateNameException;
-import org.example.devops_mini_back.exception.ValidationCheckException;
 import org.example.devops_mini_back.repository.FoodRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,6 +22,7 @@ public class FoodService {
     }
 
     public Food getFoodById(int id) {
+        IdExistCheck(id);
         return foodRepository.findById(id).get();
     }
 
@@ -42,6 +41,7 @@ public class FoodService {
 
     @Transactional
     public Food updateFood(FoodUpdateDto foodUpdateDto) {
+        IdExistCheck(foodUpdateDto.getFoodId());
         Food food = foodRepository.findById(foodUpdateDto.getFoodId()).get();
         food.setKcal(foodUpdateDto.getKcal());
         food.setPicture(foodUpdateDto.getPicture());
@@ -50,7 +50,15 @@ public class FoodService {
 
     @Transactional
     public void deleteFood(int foodId) {
+        IdExistCheck(foodId);
         foodRepository.deleteById(foodId);
     }
+
+    private void IdExistCheck(int foodId) {
+        if(!foodRepository.existsById(foodId)) {
+            throw new RuntimeException("ID가 존재하지 않습니다.");
+        }
+    }
+
 
 }
