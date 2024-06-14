@@ -35,6 +35,7 @@ public class BurnCalorieService {
     }
 
 
+
     @Transactional
     public int addBurnCalorie(BurnCalorieCreateDto createDto) {
         Optional<BurnCalorie> existBurn = existCheck(createDto);
@@ -58,6 +59,10 @@ public class BurnCalorieService {
     @Transactional
     public void deleteBurnCalorie(int intakeCalorieId) {
         burnCalorieRepository.deleteById(intakeCalorieId);
+    }
+    @Transactional
+    public void deleteBurnCalorieByUserId(int userId) {
+        burnCalorieRepository.deleteAllByUser_UserId(userId);
     }
     @Transactional
     public void deleteBurnCalorieByUserAndDate(BurnCalorieDeleteDto deleteDto) {
