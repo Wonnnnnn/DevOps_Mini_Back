@@ -28,9 +28,6 @@ public class ExerciseFavoriteService {
         return exerciseFavoriteRepository.findAllByUser_UserId(userId);
     }
 
-    public ExerciseFavorite getExerciseFavoriteById(int id) {
-        return exerciseFavoriteRepository.findById(id).get();
-    }
 
     @Transactional
     public ExerciseFavorite addExerciseFavorite(ExerciseFavoriteCreateDto exerciseFavoriteCreateDto) {

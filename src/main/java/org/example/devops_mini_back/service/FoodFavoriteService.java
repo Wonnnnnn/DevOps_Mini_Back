@@ -26,10 +26,6 @@ public class FoodFavoriteService {
         return foodFavoriteRepository.findAllByUser_UserId(userid);
     }
 
-    public FoodFavorite getFoodFavoriteById(int id) {
-        return foodFavoriteRepository.findById(id).get();
-    }
-
     @Transactional
     public FoodFavorite addFoodFavorite(FoodFavoriteCreateDto foodFavoriteCreateDto) {
         FoodFavorite foodFavorite = new FoodFavorite(0,

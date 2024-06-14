@@ -46,15 +46,6 @@ public class FoodFavoriteController {
                 ).collect(Collectors.toList());
     }
 
-    @GetMapping("/{foodFavoriteId}")
-    public FoodFavoriteResponseDto getFoodFav(@PathVariable("foodFavoriteId") int foodFavoriteId) {
-        FoodFavorite target = foodFavoriteService.getFoodFavoriteById(foodFavoriteId);
-
-        return new FoodFavoriteResponseDto(target.getFoodFavoriteId(),
-                target.getUser().getUserId(), target.getFood().getFoodName(),
-                target.getFood().getKcal(), target.getFood().getPicture());
-    }
-
     @PostMapping
     public FoodFavorite addFoodFav(@RequestBody FoodFavoriteCreateDto foodFavoriteCreateDto) {
         return foodFavoriteService.addFoodFavorite(foodFavoriteCreateDto);

@@ -17,21 +17,6 @@ import java.util.stream.Collectors;
 public class IntakeCalorieController {
     private final IntakeCalorieService intakeCalorieService;
 
-    @GetMapping
-    public List<IntakeCalorieResponseDto> getAllIntake() {
-        return intakeCalorieService.getAllIntakeCalorie()
-                .stream()
-                .map( o -> new IntakeCalorieResponseDto(
-                                o.getDate(),
-                                o.getUser().getUserId(),
-                                o.getBreakfast(),
-                                o.getLunch(),
-                                o.getDinner(),
-                                o.getSnack()
-                        )
-                ).collect(Collectors.toList());
-    }
-
     @GetMapping("/{userId}")
     public List<IntakeCalorieResponseDto> getIntakebyuserId(@PathVariable("userId") int userId) {
         return intakeCalorieService.findByUserId(userId)

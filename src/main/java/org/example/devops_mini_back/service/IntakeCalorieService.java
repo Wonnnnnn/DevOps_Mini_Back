@@ -6,7 +6,6 @@ import org.example.devops_mini_back.dto.IntakeCalorie.IntakeCalorieIdAndDateDto;
 import org.example.devops_mini_back.entity.IntakeCalorie;
 import org.example.devops_mini_back.exception.ValidationCheckException;
 import org.example.devops_mini_back.repository.IntakeCalorieRepository;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,10 +33,6 @@ public class IntakeCalorieService {
     public IntakeCalorie findByUserIdAndDate(IntakeCalorieIdAndDateDto targetDto){
         is_valid(targetDto.getDate());
         return intakeCalorieRepository.findByUser_UserIdAndDate(targetDto.getUserId(), targetDto.getDate()).get();
-    }
-
-    public List<IntakeCalorie> getAllIntakeCalorie() {
-        return intakeCalorieRepository.findAll();
     }
 
     @Transactional

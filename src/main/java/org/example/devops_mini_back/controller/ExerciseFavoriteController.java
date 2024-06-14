@@ -47,16 +47,6 @@ public class ExerciseFavoriteController {
                 ).collect(Collectors.toList());
     }
 
-    @GetMapping("/{exerciseFavoriteId}")
-    public ExerciseFavoriteResponseDto getExerciseFav(@PathVariable("exerciseFavoriteId") int exerciseFavoriteId) {
-        ExerciseFavorite target = exerciseFavoriteService.getExerciseFavoriteById(exerciseFavoriteId);
-
-        return new ExerciseFavoriteResponseDto(target.getExerciseFavoriteId(),
-                target.getUser().getUserId(), target.getExercise().getExerciseName(),
-                target.getExercise().getYoutubeId(),target.getExercise().getKcal(),
-                target.getExercise().getPicture());
-    }
-
     @PostMapping
     public ExerciseFavorite addExerciseFav(@RequestBody ExerciseFavoriteCreateDto exerciseFavoriteCreateDto) {
         return exerciseFavoriteService.addExerciseFavorite(exerciseFavoriteCreateDto);
