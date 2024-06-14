@@ -4,10 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.Food.FoodCreateDto;
 import org.example.devops_mini_back.dto.Food.FoodUpdateDto;
 import org.example.devops_mini_back.entity.Food;
+import org.example.devops_mini_back.exception.DuplicateNameException;
+import org.example.devops_mini_back.exception.ValidationCheckException;
 import org.example.devops_mini_back.repository.FoodRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,9 +29,15 @@ public class FoodService {
 
     @Transactional
     public Food addFood(FoodCreateDto foodCreateDto) {
+        foodNameCheck(foodCreateDto.getFoodName());
         Food food = new Food(0, foodCreateDto.getFoodName(),
                 foodCreateDto.getKcal(), foodCreateDto.getPicture());
         return foodRepository.save(food);
+    }
+    private void foodNameCheck(String foodName) {
+        if(foodRepository.existsByFoodName(foodName)){
+            throw new DuplicateNameException("이미 등록된 음식이 존재합니다.");
+        }
     }
 
     @Transactional
