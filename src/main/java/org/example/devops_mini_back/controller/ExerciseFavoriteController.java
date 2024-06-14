@@ -2,6 +2,7 @@ package org.example.devops_mini_back.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteCreateDto;
+import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteDeleteDto;
 import org.example.devops_mini_back.dto.ExerciseFavorite.ExerciseFavoriteResponseDto;
 import org.example.devops_mini_back.entity.ExerciseFavorite;
 import org.example.devops_mini_back.service.ExerciseFavoriteService;
@@ -61,8 +62,8 @@ public class ExerciseFavoriteController {
         return exerciseFavoriteService.addExerciseFavorite(exerciseFavoriteCreateDto);
     }
 
-    @DeleteMapping("/{exerciseFavoriteId}")
-    public void deleteExerciseFav(@PathVariable("exerciseFavoriteId") int exerciseFavoriteId) {
-        exerciseFavoriteService.deleteExerciseFavorite(exerciseFavoriteId);
+    @DeleteMapping
+    public void deleteExerciseFavByUidandFavId(@RequestBody ExerciseFavoriteDeleteDto exerciseFavoriteDeleteDto) {
+        exerciseFavoriteService.deleteExerciseFavoriteByUidandExerciseId(exerciseFavoriteDeleteDto);
     }
 }

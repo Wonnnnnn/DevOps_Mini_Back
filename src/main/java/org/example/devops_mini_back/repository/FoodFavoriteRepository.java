@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface FoodFavoriteRepository extends JpaRepository<FoodFavorite, Integer> {
     void deleteAllByUser_UserId(int userID);
-    void deleteByUidandFoodId(FoodFavoriteDeleteDto foodFavoriteDeleteDto);
+    void deleteByUser_UserIdAndFoodFavoriteId(int user_userId, int foodFavoriteId);
     List<FoodFavorite> findAllByUser_UserId(int userID);
 }

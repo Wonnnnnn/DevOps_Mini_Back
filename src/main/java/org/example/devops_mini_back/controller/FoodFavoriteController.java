@@ -60,11 +60,6 @@ public class FoodFavoriteController {
         return foodFavoriteService.addFoodFavorite(foodFavoriteCreateDto);
     }
 
-    @DeleteMapping("/{foodFavoriteId}")
-    public void deleteFoodFav(@PathVariable("foodFavoriteId") int foodFavoriteId) {
-        foodFavoriteService.deleteFoodFavorite(foodFavoriteId);
-    }
-
     @DeleteMapping
     public void deleteFoodFavsUidanFoodid(@RequestBody FoodFavoriteDeleteDto foodFavoriteDeleteDto) {
         foodFavoriteService.deleteFoodFavoriteUidandFoodId(foodFavoriteDeleteDto);

@@ -39,12 +39,10 @@ public class FoodFavoriteService {
     }
 
     @Transactional
-    public void deleteFoodFavorite(int foodId) {
-        foodFavoriteRepository.deleteById(foodId);
-    }
-
-    @Transactional
     public void deleteFoodFavoriteUidandFoodId(FoodFavoriteDeleteDto foodFavoriteDeleteDto) {
-        foodFavoriteRepository.deleteByUidandFoodId(foodFavoriteDeleteDto);
+        foodFavoriteRepository
+                .deleteByUser_UserIdAndFoodFavoriteId(
+                        foodFavoriteDeleteDto.getUserId(),
+                        foodFavoriteDeleteDto.getFoodId());
     }
 }
